@@ -11,6 +11,7 @@ use Cinema\Controller\ShowFilmController;
 use Reseau\Controller\ReseauController;
 use Reseau\Controller\MeetingController;
 use Reseau\Controller\UserController;
+use Reseau\Controller\AjoutController;
 use Reseau\Controller\User;
 use Exception;
 
@@ -49,6 +50,10 @@ final class ParseUriStaticNameHelper implements ParseUriHelper
             return FilmController::class;
         }
 
+        if ($requestUri === '/ajout'){
+            return AjoutController::class;
+        }
+        
         if (preg_match('#/film/.*#', $requestUri)) {
             $requestUriParams = explode('/', $requestUri);
             $_GET['name'] = urldecode($requestUriParams[2]);

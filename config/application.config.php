@@ -30,6 +30,8 @@ use Reseau\Controller\MeetingController;
 use Reseau\Factory\MeetingControllerFactory;
 use Reseau\Controller\UserController;
 use Reseau\Factory\UserControllerFactory;
+use Reseau\Controller\AjoutController;
+use Reseau\Factory\AjoutControllerFactory;
 
 return [
     'factories' => [
@@ -55,6 +57,7 @@ return [
         ReseauController::class => ReseauControllerFactory::class,
         MeetingController::class => MeetingControllerFactory::class,
         UserController::class => UserControllerFactory::class,
+        AjoutController::class => AjoutControllerFactory::class,
 
     ],
 ];

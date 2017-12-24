@@ -1,0 +1,79 @@
+<?php
+
+if (isset($_POST['singlebutton'])){
+
+    $this->reseauRepository->addMeetup($_POST['debut'], $_POST['fin'], $_POST['nom'], $_POST['description'], $_POST['selectbasic']);
+}
+?>
+<form method='post' action='' class="form-horizontal">
+<fieldset>  
+
+<!-- Form Name -->
+<legend>Ajouter un meetup</legend>
+
+<!-- Select Basic -->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="selectbasic">Communaute</label>
+  <div class="col-md-4">
+    <select id="selectbasic" name="selectbasic" class="form-control">
+        <?php foreach($communities as $com){
+            echo "<option value='".$com->getCommunityId()."'>".$com->getCommunityName()."</option>";
+        }
+        ?>
+    </select>
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="textinput">Date de debut</label>  
+  <div class="col-md-4">
+  <input id="textinput1" name="debut" placeholder="debut" class="form-control input-md" type="text">
+  <span class="help-block">YYYY-MM-DD</span>  
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="textinput">Date de fin</label>  
+  <div class="col-md-4">
+  <input id="textinput2" name="fin" placeholder="fin" class="form-control input-md" type="text">
+  <span class="help-block">YYYY-MM-DD</span>  
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="textinput">Nom du meetup</label>  
+  <div class="col-md-4">
+  <input id="textinput" name="nom" placeholder="nom" class="form-control input-md" type="text">
+  </div>
+</div>
+
+<!-- Textarea -->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="textarea">Description</label>
+  <div class="col-md-4">                     
+    <textarea class="form-control" id="textarea" name="description"></textarea>
+  </div>
+</div>
+
+<!-- Button -->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="singlebutton"></label>
+  <div class="col-md-4">
+    <button id="singlebutton" name="singlebutton" class="btn btn-success">OK</button>
+  </div>
+</div>
+
+</fieldset>
+</form>
+
+
+
+
+
+
+
+
+<a href="reseau" class="btn btn-default"><span class="glyphicon glyphicon-chevron-left"></span> Retour </a>

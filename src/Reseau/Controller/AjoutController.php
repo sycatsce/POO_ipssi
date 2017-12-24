@@ -6,7 +6,7 @@ namespace Reseau\Controller;
 
 use Reseau\Repository\ReseauRepository;
 
-final class UserController
+final class AjoutController
 {
     /**
      * @var ReseauRepository
@@ -20,14 +20,10 @@ final class UserController
 
     public function indexAction() : string
     {
-        if (!isset($_POST['id'])){ header('Location: reseau');}
-        
-        $meetupsOrganized = $this->reseauRepository->getUserMeetupOrganizer(intval($_POST['id']));
-        $meetupsAttendeed = $this->reseauRepository->getUserMeetupAttendee(intval($_POST['id']));
-        $user = $this->reseauRepository->getUser(intval($_POST['id']));
-
+        $communities = $this->reseauRepository->getAllCommunities();
         ob_start();
-        include __DIR__.'/../../../views/user.phtml';
+        include __DIR__.'/../../../views/ajout.phtml';
         return ob_get_clean();
+
     }
 }

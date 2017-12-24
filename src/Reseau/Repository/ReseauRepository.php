@@ -52,10 +52,10 @@ final class ReseauRepository
 
     public function getAllCommunities() : CommunityCollection
     {
-        $statement = $this->pdo->query("SELECT community_name, count(*) FROM communities, meetup WHERE communities.id = meetup.community_id GROUP BY community_name");
+        $statement = $this->pdo->query("SELECT community_name, communities.id, count(*) FROM communities, meetup WHERE communities.id = meetup.community_id GROUP BY community_name");
         $communities = [];
         while ($community = $statement->fetch()) {
-            $communities[] = new Community( $community['community_name'], intval($community['count(*)']));
+            $communities[] = new Community( $community['community_name'], intval($community['count(*)']), intval($community['id']));
         }
         return new CommunityCollection(...$communities);
     }
@@ -125,5 +125,18 @@ final class ReseauRepository
             $res[] = $meetup['title'];
         }
         return $res;
+    }
+
+    public function addMeetup(String $debut, String $fin, String $title, String $description, String $commu)
+    {   
+        $statement = "INSERT INTO meetup(`date_begin`, `date_end`, `title`, `description`, `community_id`) VALUES (:debut, :fin, :title, :description, :commu)";
+        $mes = $this->pdo->prepare($statement, array(PDO::ATTR_CURSOR => PDO::CURSOR_SCROLL));
+        $res = $mes->execute(array(
+            ":debut" => $debut,
+            ":fin" => $fin,
+            ":title" => $title,
+            ":description" => $description,
+            ":commu" => $commu
+        ));
     }
 }
