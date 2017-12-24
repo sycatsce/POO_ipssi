@@ -1,0 +1,29 @@
+<h1> <?=$meetup->getTitle(); ?> </h1>
+
+<div class='infos_meetup'>
+
+    <p> <b>Communauté</b> : <?=$community;?> </p>
+    <p> <b>Description</b> : <?=$meetup->getDescription(); ?> </p>
+    <p> <b>Date de début</b> : <?=$meetup->getDate_begin();?>
+    <p> <b>Date de fin</b> : <?=$meetup->getDate_end();?>
+    <p> <b>Organisateurs</b>
+        <ul>
+            <?php foreach ($organizers as $organizer){
+                echo "<li>" . $organizer->getName() . "</li>";
+            }
+            ?>
+        </ul>
+    </p>
+
+    <p> <b>Participants</b>
+        <ul>
+            <?php foreach ($attendees as $attendee){
+                echo "<li>" . $attendee->getName() . "</li>";
+            }
+            ?>
+        </ul>
+    </p> 
+
+</div>
+
+<a href="reseau" class="btn btn-default"><span class="glyphicon glyphicon-chevron-left"></span> Retour </a>

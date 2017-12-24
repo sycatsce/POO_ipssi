@@ -1,0 +1,65 @@
+<h1> Réseau </h1>
+
+<table style="width:100%">
+<h3> Liste des communautés </h3>
+<tr>
+    <th>Nom</th>
+    <th>Nombre de meetup</th>
+</tr>
+    <?php
+        foreach($communities as $community){
+            echo "<tr>";
+            echo "<td>" . $community->getCommunityName() . "</td>";
+            echo "<td>" . $community->getNbMeetup() . "</td>";
+            echo "</tr>";
+        }
+    ?>
+</table>
+
+<hr>
+
+<table style="width:100%">
+<h3> Liste des meetups </h3>
+<tr>
+    <th>Titre</th>
+    <th>Description</th>
+    <th>Date de début</th>
+    <th>Date de fin</th>
+    <th>Communauté</th>
+    <th>More</th>
+
+    <?php
+        foreach($meetings as $meeting){
+            $id = $meeting->getId();
+
+            echo "<form action='meeting' method='post'> <tr>";
+            echo "<td>" . $meeting->getTitle() . "</a></td>";
+            echo "<td>" . $meeting->getDescription() . "</td>";
+            echo "<td>" . $meeting->getDate_begin() . "</td>";
+            echo "<td>" . $meeting->getDate_end() . "</td>";
+            echo "<td>" . $meeting->getCommu() . "</td>";
+            echo "<td> <button class='btn btn-info' type='submit' name='id' value='".$id."'>More</button> </td>";
+            echo "</tr> </form>";
+        }
+    ?>
+
+</table>
+
+<hr>
+
+<table style="width:100%">
+<h3> Liste des utilisateurs </h3>
+<tr>
+    <th>Nom</th>
+    <th>More</th>
+</tr>
+    <?php
+        foreach($users as $user){
+            echo "<form action='user' method='post'><tr>";
+            echo "<td>" . $user->getName() . "</td>";
+            echo "<td> <button class='btn btn-info' type='submit' name='id' value='".$user->getId()."'>More</button> </td>";
+            echo "</tr> </form>";
+        }
+    ?>
+
+</table>

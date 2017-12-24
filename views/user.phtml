@@ -1,0 +1,18 @@
+<h1> Utilisateur : <?=$user->getName();?> </h1>
+
+<h3> Organisateur de : </h3>
+    <ul>
+    <?php foreach($meetupsOrganized as $meetupOrg){
+        echo "<li>" . $meetupOrg . "</li>";
+    }
+    ?>
+    </ul>
+
+<h3> Participe à : </h3>
+    <ul>
+    <?php foreach($meetupsAttendeed as $meetupAtt){
+        echo "<li>" . $meetupAtt . "</li>";
+    }
+    ?>
+    </ul>
+
