@@ -52,7 +52,7 @@ final class ReseauRepository
 
     public function getAllCommunities() : CommunityCollection
     {
-        $statement = $this->pdo->query("SELECT community_name, communities.id, count(*) FROM communities, meetup WHERE communities.id = meetup.community_id GROUP BY community_name");
+        $statement = $this->pdo->query("SELECT c.community_name, count(*), c.id FROM communities c LEFT JOIN meetup m ON m.community_id = c.id GROUP BY c.community_name, c.id;");
         $communities = [];
         while ($community = $statement->fetch()) {
             $communities[] = new Community( $community['community_name'], intval($community['count(*)']), intval($community['id']));

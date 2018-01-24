@@ -29,7 +29,6 @@ final class ParseUriStaticNameHelper implements ParseUriHelper
      */
     public function parseUri(string $requestUri): string
     {
-        $requestUri = \substr($requestUri, 10);
         if ($requestUri === '/') {
             $requestUri = substr($requestUri, 1);
         }
